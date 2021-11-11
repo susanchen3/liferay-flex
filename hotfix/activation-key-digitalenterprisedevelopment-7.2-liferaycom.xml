@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<license>
+	<account-name>Liferay.com</account-name>
+	<owner>Liferay.com</owner>
+	<description>Liferay.com</description>
+	<product-name>Digital Enterprise Development</product-name>
+	<product-version>7.2</product-version>
+	<license-name>Digital Enterprise Development</license-name>
+	<license-type>developer</license-type>
+	<license-version>6</license-version>
+	<start-date>Wednesday, December 9, 2020 11:54:18 PM GMT</start-date>
+	<expiration-date>Friday, November 15, 2120 11:54:18 PM GMT</expiration-date>
+	<max-http-sessions>5</max-http-sessions>
+	<key>9bc822b3e1e7a5524cb4c91c2aafd9b0a3961d420397c2c8092ca750d3be9c30cf59e1efd36626c3881b3329ec6ca11c9e05a01f46803d90edc43553d7eb16b15eac84e8f9b27c972510beebc0a4505d6a4ad5a6ec12e4ecad479827d7bbc8384c41cc0353b642cdf962a0a791850356788e06cc95985836addd9274578e4e02f0e98f8d</key>
+</license>

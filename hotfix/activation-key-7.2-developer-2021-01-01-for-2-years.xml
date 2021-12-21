@@ -5,13 +5,13 @@
 	<owner>Liferay Activation Key</owner>
 	<description>Liferay Activation Key</description>
 	<product-name>Portal Development</product-name>
-	<product-version>7.4</product-version>
+	<product-version>7.2</product-version>
 	<license-name>Portal Developer</license-name>
 	<license-type>developer</license-type>
 	<license-version>6</license-version>
 	<start-date>Friday, January 1, 2021 12:00:01 AM GMT</start-date>
-	<expiration-date>Saturday, January 1, 2022 12:00:01 AM GMT</expiration-date>
+	<expiration-date>Sunday, January 1, 2023 12:00:01 AM GMT</expiration-date>
 	<max-http-sessions>10</max-http-sessions>
 	<instance-size>Sizing 4</instance-size>
-	<key>43d0b9578076773ecbe01929ed6154c4508e38b4e97724e2da2aa176f29938efb47680204d14c089589a06970664ee802d98e3e884bd9ac3a6998b5bfc3127b4fd0fcf3b2d852b3d61acf5ef6b6949a6829e77cd559cf1abb7818e3ed0423d01fe060199f2d032f16f2762b44d54fac27876bb8221094d0742daf6c1fede92d5679d2b2c</key>
+	<key>a320a9271076f7ce3bb029b91df12464603e18f44917f4422a6a5166f219c87ff4d6b0b09d0490c918aa562736f4ced00d780328f4adba3356694b5bbcc1b7e4fd0fcf3b93c448d5d69e50c6b279b0fd5d75c335559cf1abb7818e3ed0423d01fe060199f2d032f16f2762b44d54fac27876bb8221094d0742daf6c1fede92d5679d2b2c</key>
 </license>

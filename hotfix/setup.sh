@@ -19,6 +19,7 @@
 	PW=''
 	
 # Bundles
+	SEVENFOUR='https://files.liferay.com/private/ee/portal/7.4.13/liferay-dxp-tomcat-7.4.13-ga1-20211020105546063.7z'
 	SEVENTHREE='https://files.liferay.com/private/ee/portal/7.3.10/liferay-dxp-tomcat-7.3.10-ga1-20200930160533946.7z'
 	SEVENTWO='https://files.liferay.com/private/ee/portal/7.2.10/liferay-dxp-tomcat-7.2.10-ga1-20190531140450482.7z'
 	SEVENONE='https://files.liferay.com/private/ee/portal/7.1.10/liferay-dxp-tomcat-7.1.10-ga1-20180703090613030.zip'
@@ -27,7 +28,7 @@
 
 #### Functions
 
-# Downloads bundles 7.3, 7.2, 7.1, 7.0, 6.2 and respective patching tools
+# Downloads bundles 7.4.13 7.3, 7.2, 7.1, 7.0, 6.2 and respective patching tools
 # Also works for other portal versions, but have to manually link bundle and patching tool
 bundleandpatchingtool ()
 {
@@ -35,9 +36,10 @@ bundleandpatchingtool ()
 	local pt
 	local portalv=$1
 	
-	if [[ $portalv == '7.3' ]] || [[ $portalv == '7.2' ]]
+	if [[ $portalv == '7.4.13' ]] || [[ $portalv == '7.3' ]] || [[ $portalv == '7.2' ]]
 		then
-			if [[ $portalv == '7.3' ]]; then bundle=$SEVENTHREE; pt='3.0.27'; fi
+			if [[ $portalv == '7.4.13' ]]; then bundle=$SEVENFOUR; pt='3.0.30'; fi
+			if [[ $portalv == '7.3' ]]; then bundle=$SEVENTHREE; pt='3.0.30'; fi
 			if [[ $portalv == '7.2' ]]; then bundle=$SEVENTWO; pt='2.0.15'; fi
 			
 			echo -e "\e[44m\nDownloading the $portalv bundle\e[0m"		
@@ -109,6 +111,7 @@ dlhotfix ()
 {
 	local portalv=$1
 	
+	if [[ $portalv == '7.4.13' ]]; then portalv='7.4.13'; pv='7413'; fi
 	if [[ $portalv == '7.3' ]]; then portalv='7.3.10'; pv='7310'; fi
 	if [[ $portalv == '7.2' ]]; then portalv='7.2.10'; pv='7210'; fi
 	if [[ $portalv == '7.1' ]]; then portalv='7.1.10'; pv='7110'; fi
@@ -122,13 +125,15 @@ dlhotfix ()
 }
 
 
-# Deleting data, logs, and osgi/state folders
+# Deleting data, logs, and osgi/state tomcat/temp and tomcat/work folders
 clearfd ()
 {
-	echo -e "\e[44mDeleting the logs, data, osgi/state folder\e[0m"
+	echo -e "\e[44mDeleting the logs, data, osgi/state, tomcat/temp and tomcat/work folder\e[0m"
 	rm -r $cwd/bundles/hotfix/*/data
 	if [ -d $cwd/bundles/hotfix/*/osgi/state ]; then rm -r $cwd/bundles/hotfix/*/osgi/state; fi
 	if [ -d $cwd/bundles/hotfix/*/logs ]; then rm -r $cwd/bundles/hotfix/*/logs; fi 
+	if [ -d $cwd/bundles/hotfix/*/tomcat*/temp ]; then rm -r $cwd/bundles/hotfix/*/tomcat*/temp; fi 
+	if [ -d $cwd/bundles/hotfix/*/tomcat*/work ]; then rm -r $cwd/bundles/hotfix/*/tomcat*/work; fi 
 
 }
 
@@ -172,6 +177,7 @@ placekey()
 	echo -e "\e[44mPlacing the activation key into deploy\e[0m"
 	if [ ! -d $cwd/bundles/hotfix/*/deploy ]; then cd $cwd/bundles/hotfix/*/; mkdir deploy; fi 
 	
+	if [[ $portalv == '7.4.13' ]]; then cp $cwd/activation-key*7.4* $cwd/bundles/hotfix/*/deploy; fi
 	if [[ $portalv == '7.3' ]]; then cp $cwd/activation-key*7.3* $cwd/bundles/hotfix/*/deploy; fi
 	if [[ $portalv == '7.2' ]]; then cp $cwd/activation-key*7.2* $cwd/bundles/hotfix/*/deploy; fi
 	if [[ $portalv == '7.1' ]]; then cp $cwd/activation-key*7.1* $cwd/bundles/hotfix/*/deploy; fi
@@ -190,7 +196,7 @@ dlhf()
 	mkdir -p bundles/hotfix
 
 # Ask which portal version
-	read -p 'Specify which portal version [7.3, 7.2, 7.1, 7.0, 6.2, other]: ' portalv
+	read -p 'Specify which portal version [7.4.13, 7.3, 7.2, 7.1, 7.0, 6.2, other]: ' portalv
 	read -s -p 'Password: ' pw
 	PW=$pw
 
